@@ -1,0 +1,25 @@
+DirectoryIndex index.html
+ErrorDocument 404 /404.html
+
+<IfModule mod_mime.c>
+  AddType image/avif .avif
+  AddType image/webp .webp
+  AddType audio/ogg .ogg
+  AddType audio/mpeg .mp3
+  AddType video/webm .webm
+  AddType font/woff2 .woff2
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  <FilesMatch "\.(js|css|woff2)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.(avif|webp|jpg|png|svg|mp3|ogg|mp4|webm)$">
+    Header set Cache-Control "public, max-age=86400"
+  </FilesMatch>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+</IfModule>
