@@ -1,0 +1,16 @@
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,34823,e=>{"use strict";var a=e.i(43476),t=e.i(71645),u=e.i(39072),i=e.i(90072),n=e.i(38408),l=e.i(30353),l=l;let c=e=>e===Object(e)&&!Array.isArray(e)&&"function"!=typeof e;function s(e,a){let u=(0,n.f)(e=>e.gl),s=(0,l.H)(i.H5,c(e)?Object.values(e):e);return(0,t.useLayoutEffect)(()=>{null==a||a(s)},[a]),(0,t.useEffect)(()=>{if("initTexture"in u){let e=[];Array.isArray(s)?e=s:s instanceof i.Sk?e=[s]:c(s)&&(e=Object.values(s)),e.forEach(e=>{e instanceof i.Sk&&u.initTexture(e)})}},[u,s]),(0,t.useMemo)(()=>{if(!c(e))return s;{let a={},t=0;for(let u in e)a[u]=s[t++];return a}},[e,s])}s.preload=e=>l.H.preload(i.H5,e),s.clear=e=>l.H.clear(i.H5,e);var r=e.i(98903),o=e.i(49448),v=e.i(4421),f=e.i(54192);let h=`
+varying vec2 vUv;uniform sampler2D uImage,uTechnical;
+uniform vec2 uFocal,uSize,uLens;
+uniform float uProgress,uAspect,uImageAspect,uLensRadius,uLensFeather,uLensOpacity;
+void main(){
+ vec2 uv=vUv;
+ if(uAspect>uImageAspect){float ratio=uImageAspect/uAspect;uv.y=uv.y*ratio+(1.-ratio)*(1.-uFocal.y);}
+ else{float ratio=uAspect/uImageAspect;uv.x=uv.x*ratio+(1.-ratio)*uFocal.x;}
+ vec3 real=texture2D(uImage,uv).rgb;
+ vec3 tech=texture2D(uTechnical,uv).rgb;
+ float scan=clamp((uProgress-.18)/.3,0.,1.);
+ float reveal=step(1.-scan,vUv.y)*step(.18,uProgress);
+ float distanceToLens=length(vec2(vUv.x,1.-vUv.y)*uSize-uLens);
+ float lens=clamp((uLensRadius-distanceToLens)/max(uLensFeather,1.),0.,1.)*uLensOpacity;
+ gl_FragColor=vec4(mix(real,tech,reveal*(1.-lens)),1.);
+}`;function p(){let e=(0,t.useRef)(null),u=s((0,f.J)(o.f["IMG-PD-A"].src)),l=s((0,f.J)(o.f["IMG-PD-A-tecnico"].src)),c=(0,n.f)(e=>e.invalidate),p=(0,t.useMemo)(()=>({uImage:{value:u},uTechnical:{value:l},uImageAspect:{value:o.f["IMG-PD-A"].width/o.f["IMG-PD-A"].height},uProgress:{value:0},uAspect:{value:1.5},uFocal:{value:new i.wq(.58,.5)},uSize:{value:new i.wq(1920,1280)},uLens:{value:new i.wq},uLensRadius:{value:0},uLensFeather:{value:1},uLensOpacity:{value:0}}),[u,l]);return(0,t.useEffect)(()=>{c()},[p,c]),(0,r.f)(a=>{let t=e.current?.uniforms;if(!t)return;t.uProgress.value=v.P.technical,t.uAspect.value=v.P.technicalSize.width/v.P.technicalSize.height,t.uFocal.value.set(v.P.technicalFocal.x,v.P.technicalFocal.y),t.uSize.value.set(v.P.technicalSize.width,v.P.technicalSize.height);let u=v.P.technicalLens;t.uLens.value.set(u.x,u.y),t.uLensRadius.value=u.radius,t.uLensFeather.value=u.feather,t.uLensOpacity.value=u.opacity,"por-dentro"!==v.i.getState().chapter||document.hidden||a.invalidate()}),(0,a.jsxs)("mesh",{frustumCulled:!1,children:[(0,a.jsx)("planeGeometry",{args:[2,2]}),(0,a.jsx)("shaderMaterial",{ref:e,vertexShader:"varying vec2 vUv;void main(){vUv=uv;gl_Position=vec4(position.xy,0.,1.);}",fragmentShader:h,uniforms:p,transparent:!0,depthTest:!1,depthWrite:!1,toneMapped:!1})]})}e.s(["TechnicalView",0,function(){return(0,v.i)(e=>e.webgl)?(0,a.jsx)(u.f,{className:"technical-view",index:2,children:(0,a.jsx)(t.Suspense,{fallback:null,children:(0,a.jsx)(p,{})})}):null}],34823)},45927,function(e){e.n(e.i(34823))}]);
