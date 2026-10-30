@@ -1,4 +1,4 @@
-:HL["/dan-classic-preview/_next/static/chunks/0ffnzbff92lbt.css","style"]
+:HL["/dan-classic-preview/_next/static/chunks/1606wd-2czzcm.css","style"]
 2:[["children",{"s":"__PAGE__","h":160}]]
 1:[["children",{"s":"/_not-found","h":96,"c":"$Q2"}]]
-0:{"b":"JZGO8lxzwzxV9zem3V-sL","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
+0:{"b":"jnvaW6_jJDHIsjmW2f290","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
