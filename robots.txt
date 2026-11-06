@@ -1,4 +1,4 @@
 User-Agent: *
 Allow: /
 
-Sitemap: https://danclassicoseimportados.com.br/sitemap.xml
+Sitemap: https://danclassic.com.br/sitemap.xml
